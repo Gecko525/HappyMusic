@@ -1,0 +1,158 @@
+/**index.wxss**/
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100rpx;
+  background: #2ca2f9;
+  font-size: 48rpx;
+  font-weight: bold;
+  padding: 0 20rpx;
+  line-height: 100rpx;
+  color: white;
+}
+.header .search {
+  float: right;
+  margin: 20rpx 40rpx;
+}
+
+.banner {
+  width: 100%;
+}
+
+.banner swiper {
+  height: 250rpx;
+}
+
+.music-list {
+  width: 100%;
+  padding: 10rpx;
+}
+.music-list .list-item {
+  height: 100rpx;
+  line-height: 100rpx;
+  padding-left: 20rpx;
+  border-bottom: 1px solid #ccc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-list .list-item .item-seq {
+  color: #ccc;
+  margin-right: 20rpx;
+}
+
+.small-player {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150rpx;
+  padding: 10rpx;
+  background: #000;
+  opacity: 0.9;
+}
+.small-player .song-img {
+  width: 130rpx;
+  height: 130rpx;
+}
+.small-player .song-info {
+  display: flex;
+  flex-direction: column;
+  width: 300rpx;
+  padding: 20rpx;
+  font-size: 34rpx;
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.small-player .song-info .song-author {
+  font-size: 30rpx;
+  color: #999;
+}
+.small-player .song-ctl{
+  width: 70rpx;
+  height: 70rpx;
+  margin: 30rpx;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.big-player {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 100rpx;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.big-player .top {
+  width: 100%;
+  height: 100rpx;
+  position: relative;
+}
+.big-player .top .go-back {
+  width: 28rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 30rpx;
+  left: 30rpx;
+}
+.big-player .top .page-title {
+  width: 100%;
+  line-height: 100rpx;
+  text-align: center;
+  color: #fff;
+}
+.big-player .song-card {
+  width: 100%;
+  padding: 100rpx 0;
+  text-align: center;
+}
+.big-player .song-card .song-img {
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 50%;
+  animation: rotate 8s linear infinite; 
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.big-player .song-ctl {
+  width: 100%;
+  height: 130rpx;
+  margin-top: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.big-player .song-ctl .ctl-img {
+  width: 100rpx;
+  height: 100rpx;
+}
+.big-player .song-ctl .ctl-img.play-pause {
+  width: 130rpx;
+  height: 130rpx;
+  margin: 0 60rpx;
+}
+.big-player .song-lyric {
+  width: 100%;
+  height: 200rpx;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-align: center;
+  color: #fff;
+}

@@ -1,0 +1,58 @@
+<!--index.wxml-->
+<view class="container" style="overflow: {{player.showSmall ? 'scroll' : 'hidden'}}">
+  <!-- header -->
+  <view class="header">
+    <text>哈皮音乐</text>
+    <icon class="search" type="search" size="25" color="white"></icon>
+  </view>
+  <!-- banner -->
+  <view class="banner">
+    <swiper indicator-dots="true"
+        autoplay="true" interval="2000" duration="500">
+        <block wx:for="{{banners}}" wx:key="*this">
+          <swiper-item>
+            <view class="swiper-item">
+              <cover-image src="{{item}}"></cover-image>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+  </view>
+  <!-- list -->
+  <view class="music-list">
+    <block wx:for="{{musicInfo.songs.list}}" wx:key="index">
+      <view class="list-item" bindtap="startPlayer" data-song="{{item}}" data-index="{{index}}">
+        <text class="item-seq">{{index + 1}}</text>
+        <text>{{item.filename}}</text>
+      </view>
+    </block>
+  </view>
+  <!-- player -->
+  <view wx:if="{{player.show}}">
+    <view wx:if="{{player.showSmall}}" class="small-player" bindtap="showBigPlayer">
+      <image src="{{player.img}}" class="song-img"></image>
+      <view class="song-info">
+        <text class="song-name">{{player.name}}</text>
+        <text class="song-author">{{player.author}}</text>
+      </view>
+      <view class="song-ctl ctl-start" style="background-image: {{player.playIcon}}" catchtap="playOrPause"></view>
+      <view class="song-ctl ctl-next" style="background-image: url(/static/images/next_icon.png)" catchtap="playNext"></view>
+    </view>
+    <view wx:else class="big-player">
+      <view class="top">
+        <image src="/static/images/goback_1.png" class="go-back" bindtap="goBack"></image>
+        <view class="page-title">{{player.name}}</view>
+      </view>
+      <view class="song-card">
+        <image src="{{player.img}}" class="song-img" style="animation-play-state: {{player.paused ? 'paused' : 'running'}}"></image>
+      </view>
+      <view class="song-lyric">{{player.lyric}}</view>
+      <view class="song-ctl">
+        <image class="ctl-img" src="/static/images/play_prev.png" bindtap="playPre"></image>
+        <image class="ctl-img play-pause" src="/static/images/play_play.png" wx:if="{{player.paused}}" bindtap="playOrPause"></image>
+        <image class="ctl-img play-pause" src="/static/images/play_pause.png" wx:else bindtap="playOrPause"></image>
+        <image class="ctl-img" src="/static/images/play_next.png" bindtap="playNext"></image>
+      </view>
+    </view>
+  </view>
+</view>
