@@ -5,6 +5,7 @@
     <text>哈皮音乐</text>
     <icon class="search" type="search" size="25" color="white"></icon>
   </view>
+
   <!-- banner -->
   <view class="banner">
     <swiper indicator-dots="true"
@@ -18,6 +19,7 @@
         </block>
       </swiper>
   </view>
+
   <!-- list -->
   <view class="music-list">
     <block wx:for="{{musicInfo.songs.list}}" wx:key="index">
@@ -27,6 +29,7 @@
       </view>
     </block>
   </view>
+
   <!-- player -->
   <view wx:if="{{player.show}}">
     <view wx:if="{{player.showSmall}}" class="small-player" bindtap="showBigPlayer">
@@ -38,6 +41,8 @@
       <view class="song-ctl ctl-start" style="background-image: {{player.playIcon}}" catchtap="playOrPause"></view>
       <view class="song-ctl ctl-next" style="background-image: url(/static/images/next_icon.png)" catchtap="playNext"></view>
     </view>
+
+    <!-- bigPlayer -->
     <view wx:else class="big-player">
       <view class="top">
         <image src="/static/images/goback_1.png" class="go-back" bindtap="goBack"></image>
@@ -46,7 +51,11 @@
       <view class="song-card">
         <image src="{{player.img}}" class="song-img" style="animation-play-state: {{player.paused ? 'paused' : 'running'}}"></image>
       </view>
-      <view class="song-lyric">{{player.lyric}}</view>
+      <scroll-view class="song-lyric" scroll-y="true" scroll-top="{{player.scrollTop}}">
+        <view wx:for="{{player.lyrics}}" wx:key="index" class="{{item.activated ? 'song-lyric-activated': ''}}">
+          <text>{{item.text}}</text>
+        </view>
+      </scroll-view>
       <view class="song-ctl">
         <image class="ctl-img" src="/static/images/play_prev.png" bindtap="playPre"></image>
         <image class="ctl-img play-pause" src="/static/images/play_play.png" wx:if="{{player.paused}}" bindtap="playOrPause"></image>
